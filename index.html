@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLAME Institute | Institutional Education Platform</title>
+    <style>
+        :root {
+            --navy: #0d1b2a;
+            --navy-light: #1b2838;
+            --navy-dark: #060d14;
+            --gold: #b8960c;
+            --gold-light: #d4af37;
+            --white: #ffffff;
+            --gray: #8892a0;
+            --gray-light: #c5ccd6;
+            --gray-dark: #3d4654;
+            --green: #228b22;
+            --red: #cc0000;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: var(--navy-dark);
+            color: var(--white);
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+            border-bottom: 2px solid var(--gold);
+            padding: 20px 40px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+        
+        .logo span { color: var(--white); }
+        
+        nav a {
+            color: var(--gray-light);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover { color: var(--gold); }
+        
+        /* Hero */
+        .hero {
+            background: linear-gradient(180deg, var(--navy) 0%, var(--navy-dark) 100%);
+            padding: 140px 40px 80px;
+            text-align: center;
+            border-bottom: 1px solid var(--gray-dark);
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            color: var(--white);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        
+        .hero h1 span { color: var(--gold); }
+        
+        .hero p {
+            font-size: 20px;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-style: italic;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 40px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 36px;
+            color: var(--gold);
+            font-weight: bold;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: var(--gray);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        /* Main Content */
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+        
+        /* Featured Section */
+        .featured {
+            background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy) 100%);
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            padding: 40px;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .featured-badge {
+            position: absolute;
+            top: -12px;
+            left: 40px;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 4px 16px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        .featured h2 {
+            font-size: 32px;
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+        
+        .featured h2 span { color: var(--gold); }
+        
+        .featured p {
+            color: var(--gray-light);
+            font-size: 18px;
+            margin-bottom: 25px;
+            max-width: 800px;
+        }
+        
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .featured-item {
+            background: var(--navy-dark);
+            padding: 25px;
+            border-left: 3px solid var(--gold);
+        }
+        
+        .featured-item h4 {
+            color: var(--gold);
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        
+        .featured-item p {
+            color: var(--gray-light);
+            font-size: 15px;
+            margin-bottom: 0;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+        }
+        
+        .comparison-table th {
+            background: var(--navy-dark);
+            color: var(--gold);
+            padding: 15px;
+            text-align: left;
+            font-size: 14px;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--gold);
+        }
+        
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--gray-dark);
+            font-size: 14px;
+        }
+        
+        .comparison-table tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+        
+        .comparison-table .red { color: var(--red); }
+        .comparison-table .green { color: var(--green); font-weight: bold; }
+        
+        /* Section Headers */
+        .section-header {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--gray-dark);
+        }
+        
+        .section-header h2 {
+            font-size: 28px;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+        
+        .section-header p {
+            color: var(--gray);
+            font-size: 16px;
+        }
+        
+        /* Module Grid */
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .module {
+            background: var(--navy-light);
+            border: 1px solid var(--gray-dark);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        
+        .module:hover {
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+        
+        .module-header {
+            background: var(--navy);
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--gray-dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .module-number {
+            background: var(--gold);
+            color: var(--navy);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .module-title {
+            flex: 1;
+            margin-left: 15px;
+            font-size: 18px;
+            color: var(--white);
+        }
+        
+        .module-body {
+            padding: 25px;
+        }
+        
+        .module-body p {
+            color: var(--gray-light);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .module-topics {
+            margin-bottom: 20px;
+        }
+        
+        .topic {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 13px;
+            color: var(--gray-light);
+        }
+        
+        .topic:last-child { border-bottom: none; }
+        
+        .topic::before {
+            content: "→";
+            color: var(--gold);
+            margin-right: 10px;
+        }
+        
+        .module-downloads {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 16px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .download-btn:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+        
+        .download-btn.primary {
+            background: var(--gold);
+            color: var(--navy);
+        }
+        
+        .download-btn.primary:hover {
+            background: var(--gold-light);
+        }
+        
+        /* Document Library */
+        .doc-library {
+            background: var(--navy-light);
+            border: 1px solid var(--gray-dark);
+            padding: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .doc-library h3 {
+            color: var(--gold);
+            font-size: 20px;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+        
+        .doc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .doc-item {
+            background: var(--navy);
+            padding: 20px;
+            border-left: 3px solid var(--gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .doc-info h4 {
+            color: var(--white);
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .doc-info span {
+            color: var(--gray);
+            font-size: 12px;
+        }
+        
+        .doc-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .doc-actions a {
+            padding: 8px 12px;
+            font-size: 11px;
+            text-decoration: none;
+            border: 1px solid var(--gray-dark);
+            color: var(--gray-light);
+            transition: all 0.3s;
+        }
+        
+        .doc-actions a:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        
+        .doc-actions a.pdf { border-color: var(--red); color: var(--red); }
+        .doc-actions a.pdf:hover { background: var(--red); color: var(--white); }
+        
+        /* Verification Section */
+        .verification-section {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            border: 2px solid var(--green);
+            border-radius: 8px;
+            padding: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .verification-section h3 {
+            color: var(--green);
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .verification-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .verify-item {
+            background: var(--navy-dark);
+            padding: 25px;
+            border-radius: 4px;
+        }
+        
+        .verify-item h4 {
+            color: var(--gold);
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        .verify-item code {
+            display: block;
+            background: #000;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: var(--gold);
+            word-break: break-all;
+            margin-bottom: 15px;
+        }
+        
+        .verify-item a {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 13px;
+        }
+        
+        .verify-item a:hover { text-decoration: underline; }
+        
+        .balance-display {
+            background: var(--green);
+            color: var(--white);
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        
+        /* Revenue Summary */
+        .revenue-section {
+            background: var(--navy-light);
+            border: 1px solid var(--gray-dark);
+            padding: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .revenue-section h3 {
+            color: var(--gold);
+            font-size: 24px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .revenue-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .revenue-table th {
+            background: var(--navy);
+            color: var(--gold);
+            padding: 15px 20px;
+            text-align: left;
+            font-size: 13px;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--gold);
+        }
+        
+        .revenue-table td {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--gray-dark);
+            font-size: 14px;
+        }
+        
+        .revenue-table tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+        
+        .revenue-table .total {
+            background: var(--gold);
+            color: var(--navy);
+            font-weight: bold;
+        }
+        
+        .revenue-table .total td {
+            border-bottom: none;
+            font-size: 16px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--navy);
+            border-top: 2px solid var(--gold);
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-size: 32px;
+            color: var(--gold);
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-tagline {
+            color: var(--gray);
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links a {
+            color: var(--gray-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .footer-links a:hover { color: var(--gold); }
+        
+        .footer-contact {
+            color: var(--gray);
+            font-size: 13px;
+        }
+        
+        .footer-contact a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .module-grid { grid-template-columns: 1fr; }
+            .featured-grid { grid-template-columns: 1fr; }
+            .verification-grid { grid-template-columns: 1fr; }
+            .hero-stats { flex-direction: column; gap: 30px; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">FLAME <span>INSTITUTE</span></div>
+            <nav>
+                <a href="#trust-paradox">TRUST PARADOX</a>
+                <a href="#modules">CURRICULUM</a>
+                <a href="#documents">DOCUMENTS</a>
+                <a href="#verification">VERIFICATION</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>THE <span>FLAME</span> INSTITUTE</h1>
+        <p>Institutional Education for Deterministic Settlement Infrastructure</p>
+        <p style="font-size: 16px; color: var(--gold);">Stop accepting messages. Start verifying math.</p>
+        
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-value">$8.66B</div>
+                <div class="stat-label">Year 1 Revenue ($10B Position)</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">87%</div>
+                <div class="stat-label">Annual ROI</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">12 sec</div>
+                <div class="stat-label">Settlement Time</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">$0</div>
+                <div class="stat-label">Counterparty Risk</div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <!-- FEATURED: Trust Paradox -->
+        <section class="featured" id="trust-paradox">
+            <div class="featured-badge">Essential Reading</div>
+            <h2>THE <span>TRUST PARADOX</span></h2>
+            <p>Why do banks accept MT-103 messages on faith, but question mathematical proof? This is the fundamental reframe every banker must understand.</p>
+            
+            <div class="featured-grid">
+                <div class="featured-item">
+                    <h4>MT-103 WIRE</h4>
+                    <p>A text message. No proof of collateral. No verification hash. No cryptographic signature. Accepted because it's familiar. <strong style="color: var(--red);">You LOSE the asset.</strong></p>
+                </div>
+                <div class="featured-item">
+                    <h4>FLAME API / ERC-721</h4>
+                    <p>Mathematical proof. On-chain collateral. Immutable audit trail. Cryptographic ownership. Questioned despite superiority. <strong style="color: var(--green);">You KEEP the asset.</strong></p>
+                </div>
+            </div>
+            
+            <table class="comparison-table">
+                <tr>
+                    <th>Attribute</th>
+                    <th>MT-103 Wire</th>
+                    <th>FLAME API</th>
+                </tr>
+                <tr>
+                    <td>Collateral Proof</td>
+                    <td class="red">"Trust us"</td>
+                    <td class="green">On-chain, instant</td>
+                </tr>
+                <tr>
+                    <td>Audit Trail</td>
+                    <td class="red">Internal logs (editable)</td>
+                    <td class="green">Immutable ledger</td>
+                </tr>
+                <tr>
+                    <td>Settlement Time</td>
+                    <td class="red">2-5 business days</td>
+                    <td class="green">12 seconds</td>
+                </tr>
+                <tr>
+                    <td>Fees</td>
+                    <td class="red">$25-50+ per hop</td>
+                    <td class="green">< $0.10 total</td>
+                </tr>
+                <tr>
+                    <td>Forgery Risk</td>
+                    <td class="red">Yes (SWIFT hacks)</td>
+                    <td class="green">Mathematically impossible</td>
+                </tr>
+                <tr>
+                    <td><strong>Asset Custody</strong></td>
+                    <td class="red"><strong>LOST (sent away)</strong></td>
+                    <td class="green"><strong>KEPT (enables tx)</strong></td>
+                </tr>
+            </table>
+            
+            <div class="module-downloads" style="margin-top: 30px;">
+                <a href="FLAME_Trust_Paradox_MT103.pdf" class="download-btn primary" download>DOWNLOAD PDF</a>
+                <a href="FLAME_Trust_Paradox_MT103.docx" class="download-btn" download>DOWNLOAD DOCX</a>
+            </div>
+        </section>
+
+        <!-- Modules Section -->
+        <section id="modules">
+            <div class="section-header">
+                <h2>Core Curriculum</h2>
+                <p>Complete institutional education across six strategic layers</p>
+            </div>
+            
+            <div class="module-grid">
+                <!-- Module 1 -->
+                <div class="module">
+                    <div class="module-header">
+                        <div class="module-number">1</div>
+                        <div class="module-title">Reserve Architecture</div>
+                    </div>
+                    <div class="module-body">
+                        <p>Understanding the foundational layer: MG as permanent reserve infrastructure with 0% risk-weighted asset classification.</p>
+                        <div class="module-topics">
+                            <div class="topic">0% RWA Classification (Basel III)</div>
+                            <div class="topic">$1B Capital Freed per $10B Position</div>
+                            <div class="topic">Gold-Equivalent Treatment</div>
+                            <div class="topic">Permanent vs. Transactional Assets</div>
+                        </div>
+                        <div class="module-downloads">
+                            <a href="FLAME_Banking_Integration_Guide.pdf" class="download-btn primary" download>PDF</a>
+                            <a href="FLAME_WHITEPAPER.pdf" class="download-btn" download>WHITEPAPER</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 2 -->
+                <div class="module">
+                    <div class="module-header">
+                        <div class="module-number">2</div>
+                        <div class="module-title">Lending Leverage</div>
+                    </div>
+                    <div class="module-body">
+                        <p>Fractional reserve mechanics: 10-12x lending multiplier generating $2.5B annual net interest margin.</p>
+                        <div class="module-topics">
+                            <div class="topic">10-12x Fractional Reserve Ratio</div>
+                            <div class="topic">Net Interest Margin Calculation</div>
+                            <div class="topic">Simultaneous Collateral Deployment</div>
+                            <div class="topic">Reserve Requirement Optimization</div>
+                        </div>
+                        <div class="module-downloads">
+                            <a href="FLAME_Exponential_Leverage_Guide.pdf" class="download-btn primary" download>PDF</a>
+                            <a href="FLAME_Exponential_Leverage.docx" class="download-btn" download>DOCX</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 3 -->
+                <div class="module">
+                    <div class="module-header">
+                        <div class="module-number">3</div>
+                        <div class="module-title">Trade Finance Rails</div>
+                    </div>
+                    <div class="module-body">
+                        <p>Atomic settlement for trade finance: simultaneous collateral backing multiple transactions.</p>
+                        <div class="module-topics">
+                            <div class="topic">Letters of Credit Automation</div>
+                            <div class="topic">Documentary Collections</div>
+                            <div class="topic">Supply Chain Finance</div>
+                            <div class="topic">$500M Annual Fee Revenue</div>
+                        </div>
+                        <div class="module-downloads">
+                            <a href="FLAME_Sovereign_Settlement.pdf" class="download-btn primary" download>PDF</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 4 -->
+                <div class="module">
+                    <div class="module-header">
+                        <div class="module-number">4</div>
+                        <div class="module-title">Network Fee Share</div>
+                    </div>
+                    <div class="module-body">
+                        <p>Proportional network revenue: earning protocol fees based on reserve stake position.</p>
+                        <div class="module-topics">
+                            <div class="topic">Proportional Fee Distribution</div>
+                            <div class="topic">$900M Annual Passive Income</div>
+                            <div class="topic">Stake-Weighted Governance</div>
+                            <div class="topic">Protocol Revenue Mechanics</div>
+                        </div>
+                        <div class="module-downloads">
+                            <a href="FLAME_WHITEPAPER.pdf" class="download-btn primary" download>PDF</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 5 -->
+                <div class="module">
+                    <div class="module-header">
+                        <div class="module-number">5</div>
+                        <div class="module-title">Deterministic Custody</div>
+                    </div>
+                    <div class="module-body">
+                        <p>The largest revenue center: wallet-based trusts, sub-custody services, and institutional custody infrastructure.</p>
+                        <div class="module-topics">
+                            <div class="topic">$2.76B Annual Custody Revenue</div>
+                            <div class="topic">Wallet = Trust (No Trustees Needed)</div>
+                            <div class="topic">Constitutional Derivation</div>
+                            <div class="topic">Estate, Corporate, Escrow Wallets</div>
+                        </div>
+                        <div class="module-downloads">
+                            <a href="FLAME_Full_Custody_Revenue.pdf" class="download-btn primary" download>CUSTODY PDF</a>
+                            <a href="FLAME_Wallet_Trust_Revenue.docx" class="download-btn" download>WALLET TRUSTS</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 6 -->
+                <div class="module">
+                    <div class="module-header">
+                        <div class="module-number">6</div>
+                        <div class="module-title">Exponential Deployment</div>
+                    </div>
+                    <div class="module-body">
+                        <p>Parallel value processing: turning sequential wire handling into simultaneous multi-dimensional deployment.</p>
+                        <div class="module-topics">
+                            <div class="topic">API vs MT-103 Processing</div>
+                            <div class="topic">5-10x Value Multiplier</div>
+                            <div class="topic">0.05 Seconds vs 4 Days</div>
+                            <div class="topic">Automated Allocation Rules</div>
+                        </div>
+                        <div class="module-downloads">
+                            <a href="FLAME_Trust_Paradox_MT103.pdf" class="download-btn primary" download>TRUST PARADOX</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Revenue Summary -->
+        <section class="revenue-section">
+            <h3>Six-Layer Revenue Model ($10B Position)</h3>
+            <table class="revenue-table">
+                <tr>
+                    <th>Layer</th>
+                    <th>Mechanism</th>
+                    <th>Annual Revenue</th>
+                    <th>Type</th>
+                </tr>
+                <tr>
+                    <td>1. Reserve Base</td>
+                    <td>0% RWA Classification</td>
+                    <td>$1.0B freed</td>
+                    <td>One-time</td>
+                </tr>
+                <tr>
+                    <td>2. Lending Leverage</td>
+                    <td>10-12x Fractional Reserve</td>
+                    <td>$2.5B NIM</td>
+                    <td>Recurring</td>
+                </tr>
+                <tr>
+                    <td>3. Trade Finance</td>
+                    <td>Simultaneous Collateral</td>
+                    <td>$0.5B fees</td>
+                    <td>Recurring</td>
+                </tr>
+                <tr>
+                    <td>4. Network Fees</td>
+                    <td>Proportional Stake Share</td>
+                    <td>$0.9B passive</td>
+                    <td>Scales</td>
+                </tr>
+                <tr>
+                    <td><strong>5. Custody + Wallet Trusts</strong></td>
+                    <td><strong>Deterministic Infrastructure</strong></td>
+                    <td><strong style="color: var(--gold);">$2.76B</strong></td>
+                    <td>Scales</td>
+                </tr>
+                <tr class="total">
+                    <td colspan="2">TOTAL YEAR 1</td>
+                    <td>$8.66 BILLION</td>
+                    <td>87% ROI</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Document Library -->
+        <section class="doc-library" id="documents">
+            <h3>Complete Document Library</h3>
+            <div class="doc-grid">
+                <div class="doc-item">
+                    <div class="doc-info">
+                        <h4>Trust Paradox: MT-103 vs API</h4>
+                        <span>The fundamental reframe</span>
+                    </div>
+                    <div class="doc-actions">
+                        <a href="FLAME_Trust_Paradox_MT103.pdf" class="pdf" download>PDF</a>
+                        <a href="FLAME_Trust_Paradox_MT103.docx" download>DOCX</a>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-info">
+                        <h4>Full Custody Revenue Model</h4>
+                        <span>$2.76B breakdown</span>
+                    </div>
+                    <div class="doc-actions">
+                        <a href="FLAME_Full_Custody_Revenue.pdf" class="pdf" download>PDF</a>
+                        <a href="FLAME_Full_Custody_Revenue.docx" download>DOCX</a>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-info">
+                        <h4>Wallet Trust Revenue</h4>
+                        <span>The wallet IS the trust</span>
+                    </div>
+                    <div class="doc-actions">
+                        <a href="FLAME_Wallet_Trust_Revenue.docx" download>DOCX</a>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-info">
+                        <h4>Banking Integration Guide</h4>
+                        <span>Complete implementation</span>
+                    </div>
+                    <div class="doc-actions">
+                        <a href="FLAME_Banking_Integration_Guide.pdf" class="pdf" download>PDF</a>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-info">
+                        <h4>Exponential Leverage Guide</h4>
+                        <span>6-layer revenue model</span>
+                    </div>
+                    <div class="doc-actions">
+                        <a href="FLAME_Exponential_Leverage_Guide.pdf" class="pdf" download>PDF</a>
+                        <a href="FLAME_Exponential_Leverage.docx" download>DOCX</a>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-info">
+                        <h4>FLAME Protocol Whitepaper</h4>
+                        <span>Technical specification</span>
+                    </div>
+                    <div class="doc-actions">
+                        <a href="FLAME_WHITEPAPER.pdf" class="pdf" download>PDF</a>
+                        <a href="FLAME_Protocol_White_Paper.docx" download>DOCX</a>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-info">
+                        <h4>How To Use Your MG</h4>
+                        <span>Practical banking guide</span>
+                    </div>
+                    <div class="doc-actions">
+                        <a href="How_To_Use_Your_MG_Banking_Guide.docx" download>DOCX</a>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-info">
+                        <h4>GB Dynamics Proof of Funds</h4>
+                        <span>Verification certificate</span>
+                    </div>
+                    <div class="doc-actions">
+                        <a href="GB_Dynamics_Proof_of_Funds.pdf" class="pdf" download>PDF</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Verification Section -->
+        <section class="verification-section" id="verification">
+            <h3>Live Verification: GB Dynamics Inc.</h3>
+            <p style="color: var(--gray-light); margin-bottom: 20px;">All holdings are verifiable on-chain in real-time. No trust required — verify the math.</p>
+            
+            <div class="verification-grid">
+                <div class="verify-item">
+                    <h4>WALLET ADDRESS</h4>
+                    <code>0xa170de937dc784422369e58e2e64e232c326a218</code>
+                    <a href="https://etherscan.io/address/0xa170de937dc784422369e58e2e64e232c326a218" target="_blank">View on Etherscan →</a>
+                    <div class="balance-display">10,000,000,000 MG</div>
+                </div>
+                <div class="verify-item">
+                    <h4>TOKEN CONTRACT (FLAMEC)</h4>
+                    <code>0xCC8598B02BB753b0A557811a99622b33C73692cF</code>
+                    <a href="https://etherscan.io/token/0xCC8598B02BB753b0A557811a99622b33C73692cF" target="_blank">View Token Contract →</a>
+                    <p style="margin-top: 15px; color: var(--gray);">6 decimals • ERC-20 • Ethereum Mainnet</p>
+                </div>
+                <div class="verify-item">
+                    <h4>DIRECT BALANCE CHECK</h4>
+                    <code>https://etherscan.io/token/0xCC8598B02BB753b0A557811a99622b33C73692cF?a=0xa170de937dc784422369e58e2e64e232c326a218</code>
+                    <a href="https://etherscan.io/token/0xCC8598B02BB753b0A557811a99622b33C73692cF?a=0xa170de937dc784422369e58e2e64e232c326a218" target="_blank">Verify Balance Now →</a>
+                </div>
+                <div class="verify-item">
+                    <h4>FUNDING TRANSACTION</h4>
+                    <code>Safe{Wallet} Multisig Distribution</code>
+                    <a href="https://etherscan.io/address/0xa170de937dc784422369e58e2e64e232c326a218#tokentxns" target="_blank">View Transaction History →</a>
+                    <p style="margin-top: 15px; color: var(--gray);">Funded via sovereign treasury distribution</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px; padding: 20px; background: var(--navy-dark); border-left: 3px solid var(--gold);">
+                <p style="color: var(--gray-light); font-size: 14px; margin: 0;">
+                    <strong style="color: var(--gold);">Why This Matters:</strong> Unlike MT-103 wires where you must trust the sender's claim of collateral, 
+                    this balance is mathematically verifiable by anyone, anywhere, in 12 seconds. No auditors required. No trust required. 
+                    The ledger is the proof.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">FLAME</div>
+            <div class="footer-tagline">Formal Ledger for Atomic & Mandatory Execution</div>
+            <div class="footer-links">
+                <a href="mailto:integration@flameqmm.app">Technical Integration</a>
+                <a href="mailto:treasury@flameqmm.app">Treasury Operations</a>
+                <a href="mailto:products@flameqmm.app">Product Development</a>
+            </div>
+            <div class="footer-contact">
+                <a href="https://flameqmm.app">flameqmm.app</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
